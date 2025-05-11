@@ -9,6 +9,7 @@ interface FlexProps {
 	$minHeight?: string;
 	className?: string;
 	children?: React.ReactNode;
+	as?: React.ElementType;
 }
 
 const StyledFlex = styled.div<FlexProps>`
@@ -21,9 +22,9 @@ height: ${({ $height }) => $height || ''};
 min-height: ${({ $minHeight }) => $minHeight || ''};
 `;
 
-export const Flex: React.FC<FlexProps> = ({...props}) => {
+export const Flex: React.FC<FlexProps> = ({as, ...props}) => {
 
 	return (
-		<StyledFlex {...props} />
+		<StyledFlex as={as} {...props} />
 	)
 }

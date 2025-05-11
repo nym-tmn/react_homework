@@ -1,19 +1,29 @@
 import styled from "styled-components";
 import { NavButton } from "@layouts";
+import { Flex } from "@components";
 
-const StyledNav = styled.nav`
-display: flex;
-justify-content: space-between;
-margin: 0 350px
-`;
-
-export const Nav = () => {
+const StyledNavContainer = ({ className }: { className?: string }) => {
 	return (
-		<StyledNav>
+		<Flex
+			className={className}
+			as="nav" 
+			$justify="space-between"
+		>
 			<NavButton to="/">Home</NavButton>
 			<NavButton to="/characters">Characters</NavButton>
 			<NavButton to="/locations">Locations</NavButton>
 			<NavButton to="/episodes">Episodes</NavButton>
-		</StyledNav>
+		</Flex>
+	);
+};
+
+const StyledNav = styled(StyledNavContainer)`
+margin-bottom: 25px;
+padding: 0 350px;
+`;
+
+export const Nav = () => {
+	return (
+		<StyledNav />
 	)
 }
