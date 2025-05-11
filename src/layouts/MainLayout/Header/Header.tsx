@@ -24,8 +24,8 @@ export const Header = () => {
 		<StyledHeader>
 			<Flex $justify="space-between" $align="center" $margin="0 20px" $height="100px">
 				<Logo />
-				<Title>Rick and Morty API</Title>
-				<Clock>{time.toLocaleTimeString()}</Clock>
+				<Title />
+				<Clock time={time}/>
 			</Flex>
 		</StyledHeader>
 	)

@@ -1,15 +1,15 @@
-import type { PropsWithChildren } from "react"
 import { styled } from "styled-components"
 
 const StyledClock = styled.time`
 font-size: 18px;
+min-width: 76px
 `;
 
-export const Clock: React.FC<PropsWithChildren> = ({ children }) => {
+export const Clock = ({...props}: {time: Date}) => {
 
 	return (
 		<StyledClock>
-			{children}
+			{props.time.toLocaleTimeString()}
 		</StyledClock>
 	)
 }
