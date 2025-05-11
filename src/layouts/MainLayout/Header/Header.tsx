@@ -4,6 +4,7 @@ import { Clock, Logo, Title } from "@layouts"
 
 const StyledHeader = styled.header`
 border-bottom: 1px solid #bdbfbb;
+margin-bottom: 15px;
 `;
 
 export const Header = () => {

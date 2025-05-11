@@ -5,3 +5,4 @@ export { Clock } from "./MainLayout/Header/Clock/Clock";
 export { Logo } from "./MainLayout/Header/Logo/Logo";
 export { Nav } from "./MainLayout/Nav/Nav";
 export { Footer } from "./MainLayout/Footer/Footer";
+export { NavButton } from "./MainLayout/Nav/NavButton/NavButton";

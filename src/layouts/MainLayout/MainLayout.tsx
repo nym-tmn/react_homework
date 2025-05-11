@@ -14,7 +14,7 @@ const StyledMainContentContainer = ({ className }: { className?: string }) => {
 	);
 };
 
-export const StyledMainContent = styled(StyledMainContentContainer)`
+const StyledMainContent = styled(StyledMainContentContainer)`
   flex: 1 1 auto;
 `;
 

@@ -24,7 +24,7 @@ const StyledAppContainer = ({ className }: { className?: string }) => {
 	);
 };
 
-export const StyledApp = styled(StyledAppContainer)`
+const StyledApp = styled(StyledAppContainer)`
   max-width: 1280px;
 width: 100%;
 margin: 0 auto;

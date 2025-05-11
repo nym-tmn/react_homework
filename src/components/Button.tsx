@@ -1,12 +1,13 @@
 
-import { styled } from "styled-components";
+import { css, styled } from "styled-components";
 
 interface ButtonProps {
 	prefix?: string;
 	children?: React.ReactNode;
+	$isActive?: boolean;
 }
 
-export const StyledButton = styled.button`
+const StyledButton = styled.button<ButtonProps>`
   padding: 0 16px 0 12px;
 	line-height: 2.3;
   border: none;
@@ -20,11 +21,19 @@ export const StyledButton = styled.button`
   &:hover {
     background-color: #35782c;
   }
+
+	${({ $isActive }) => $isActive && css`
+		background-color: #4fbaf0;
+		&:hover {
+    background-color: #4fbaf0;
+  }
+		`}
 `;
 
 export const Button: React.FC<ButtonProps> = ({ children, ...props }) => {
+
 	return (
-		<StyledButton>
+		<StyledButton {...props}>
 			{props.prefix && <span>{props.prefix}</span>}
 			{children}
 		</StyledButton>
