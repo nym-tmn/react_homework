@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router"
 import styled from "styled-components"
-import { EmptyLayout, MainLayout } from "@layouts"
-import { CharactersPage, EpisodesPage, HomePage, LocationsPage } from "@pages"
+import { MainLayout } from "@layouts"
+import { CharactersPage, EmptyPage, EpisodesPage, HomePage, LocationsPage } from "@pages"
 import { Flex } from "@components"
 
 const AppContainer = styled.div`
@@ -21,7 +21,7 @@ const App = () => {
 						<Route path="characters" element={<CharactersPage />} />
 						<Route path="locations" element={<LocationsPage />} />
 						<Route path="episodes" element={<EpisodesPage />} />
-						<Route path="*" element={<EmptyLayout />}></Route>
+						<Route path="*" element={<EmptyPage />}></Route>
 					</Route>
 				</Routes>
 			</Flex>

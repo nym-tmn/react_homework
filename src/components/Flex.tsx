@@ -20,6 +20,8 @@ min-height: ${({ $minHeight }) => $minHeight || ''};
 `;
 
 export function Flex(props: FlexProps) {
+	console.log(props);
+	
 	return (
 		<StyledFlex {...props} />
 	)

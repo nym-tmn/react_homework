@@ -1,4 +1,3 @@
-export { EmptyLayout } from "./EmptyLayout/EmptyLayout";
 export { MainLayout } from "./MainLayout/MainLayout";
 export { Header } from "./MainLayout/Header/Header";
 export { Title } from "./MainLayout/Header/Title/Title";
