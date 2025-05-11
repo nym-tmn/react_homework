@@ -6,7 +6,7 @@ font-weight: 600;
 font-size: 34px;
 `;
 
-export function Title({ children }: PropsWithChildren) {
+export const Title: React.FC<PropsWithChildren> = ({ children }) => {
 	return (
 		<StyledTitle>
 			{children}

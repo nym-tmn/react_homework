@@ -6,7 +6,7 @@ const StyledHeader = styled.header`
 border-bottom: 1px solid #bdbfbb;
 `;
 
-export function Header() {
+export const Header = () => {
 	return (
 		<StyledHeader>
 			<Flex $justify="space-between" $align="center" $margin="0 20px" $height="100px">

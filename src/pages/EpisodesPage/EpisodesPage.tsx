@@ -1,4 +1,4 @@
-export function EpisodesPage() {
+export const EpisodesPage = () => {
 	return (
 		<div>EpisodesPage</div>
 	)

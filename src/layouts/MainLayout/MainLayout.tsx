@@ -1,23 +1,29 @@
 import { Outlet } from "react-router";
 import styled from "styled-components";
 import { Footer, Header, Nav } from "@layouts";
+import { Flex } from "@components";
 
-const StyledMainContent = styled.div`
-flex: 1 1 auto;
-// height: 100%;
-display: flex;
-// flex-direction: column;
-// justify-content: center
+const StyledMainContentContainer = ({ className }: { className?: string }) => {
+	return (
+		<Flex
+			className={className}
+			$direction="column"
+		>
+			<Outlet />
+		</Flex>
+	);
+};
+
+export const StyledMainContent = styled(StyledMainContentContainer)`
+  flex: 1 1 auto;
 `;
 
-export function MainLayout() {
+export const MainLayout = () => {
 	return (
 		<>
 			<Header />
 			<Nav />
-			<StyledMainContent>
-				<Outlet />
-			</StyledMainContent>
+			<StyledMainContent />
 			<Footer />
 		</>
 	)

@@ -5,7 +5,7 @@ const StyledClock = styled.time`
 font-size: 18px;
 `;
 
-export function Clock({ children }: PropsWithChildren) {
+export const Clock: React.FC<PropsWithChildren> = ({ children }) => {
 	return (
 		<StyledClock>
 			{children}

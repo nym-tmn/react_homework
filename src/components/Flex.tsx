@@ -1,12 +1,14 @@
 import styled from "styled-components"
 
-interface FlexProps extends React.HTMLAttributes<HTMLDivElement> {
+interface FlexProps {
 	$direction?: string;
 	$justify?: string;
 	$align?: string;
 	$margin?: string;
 	$height?: string;
 	$minHeight?: string;
+	className?: string;
+	children?: React.ReactNode;
 }
 
 const StyledFlex = styled.div<FlexProps>`
@@ -19,9 +21,8 @@ height: ${({ $height }) => $height || ''};
 min-height: ${({ $minHeight }) => $minHeight || ''};
 `;
 
-export function Flex(props: FlexProps) {
-	console.log(props);
-	
+export const Flex: React.FC<FlexProps> = ({...props}) => {
+
 	return (
 		<StyledFlex {...props} />
 	)

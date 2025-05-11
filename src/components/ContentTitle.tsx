@@ -1,15 +1,21 @@
-import type { PropsWithChildren } from "react";
 import styled from "styled-components";
 
-const StyledContentTitle = styled.div`
+interface ContentTitleProps {
+	$fontSize ?: string;
+	$marginBottom?: string;
+	children?: React.ReactNode;
+}
+
+const StyledContentTitle = styled.div<ContentTitleProps>`
 font-weight: 600;
-font-size: 24px;
-margin-bottom: 20px;
+font-size: ${({ $fontSize }) => $fontSize || '16px'};
+margin-bottom: ${({ $marginBottom }) => $marginBottom || '0'};
 `;
 
-export function ContentTitle({ children }: PropsWithChildren) {
+export const ContentTitle: React.FC<ContentTitleProps> = ({ children, ...props }) => {
+
 	return (
-		<StyledContentTitle>
+		<StyledContentTitle {...props}>
 			{children}
 		</StyledContentTitle>
 	)

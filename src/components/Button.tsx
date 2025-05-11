@@ -1,8 +1,9 @@
-import type { PropsWithChildren } from "react";
+
 import { styled } from "styled-components";
 
 interface ButtonProps {
 	prefix?: string;
+	children?: React.ReactNode;
 }
 
 export const StyledButton = styled.button`
@@ -21,7 +22,7 @@ export const StyledButton = styled.button`
   }
 `;
 
-export function Button({ children, ...props }: PropsWithChildren & ButtonProps) {
+export const Button: React.FC<ButtonProps> = ({ children, ...props }) => {
 	return (
 		<StyledButton>
 			{props.prefix && <span>{props.prefix}</span>}

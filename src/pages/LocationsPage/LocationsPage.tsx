@@ -1,4 +1,4 @@
-export function LocationsPage() {
+export const LocationsPage = () => {
 	return (
 		<div>LocationsPage</div>
 	)

@@ -17,7 +17,7 @@ const FooterLink = styled.a`
   }
 `;
 
-export function Footer() {
+export const Footer = () => {
 
 	const baseUrl: string = import.meta.env.VITE_API_BASE_URL;
 
