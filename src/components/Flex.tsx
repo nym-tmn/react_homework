@@ -11,13 +11,13 @@ interface FlexProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const StyledFlex = styled.div<FlexProps>`
 display: flex;
-flex-direction: ${({$direction}) => $direction || 'row'};
-justify-content: ${({$justify}) => $justify || 'stretch'};
+flex-direction: ${({ $direction }) => $direction || 'row'};
+justify-content: ${({ $justify }) => $justify || 'stretch'};
 align-items: ${({ $align }) => $align || 'stretch'};
 margin: ${({ $margin }) => $margin || '0'};
 height: ${({ $height }) => $height || ''};
 min-height: ${({ $minHeight }) => $minHeight || ''};
-`
+`;
 
 export function Flex(props: FlexProps) {
 	return (

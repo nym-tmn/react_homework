@@ -5,7 +5,7 @@ const StyledFooter = styled.div`
 background-color: black;
 color: white;
 font-size: 14px;
-`
+`;
 
 const FooterLink = styled.a`
   text-decoration: underline;

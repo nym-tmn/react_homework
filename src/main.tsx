@@ -6,7 +6,7 @@ import { GlobalStyles } from '@assets/styles/globalStyles.ts'
 createRoot(document.getElementById('root')!).render(
 	<>
 		<BrowserRouter>
-			<GlobalStyles/>
+			<GlobalStyles />
 			<App />
 		</BrowserRouter>
 	</>

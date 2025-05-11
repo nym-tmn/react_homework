@@ -9,7 +9,7 @@ max-width: 1280px;
 width: 100%;
 margin: 0 auto;
 background-color: white;
-`
+`;
 
 const App = () => {
 	return (
@@ -18,12 +18,12 @@ const App = () => {
 				<Routes>
 					<Route path="/" element={<MainLayout />}>
 						<Route index element={<HomePage />} />
-						<Route path="/characters" element={<CharactersPage />} />
-						<Route path="/locations" element={<LocationsPage />} />
-						<Route path="/episodes" element={<EpisodesPage />} />
+						<Route path="characters" element={<CharactersPage />} />
+						<Route path="locations" element={<LocationsPage />} />
+						<Route path="episodes" element={<EpisodesPage />} />
+						<Route path="*" element={<EmptyLayout />}></Route>
 					</Route>
-					<Route path="*" element={<EmptyLayout/>}></Route>
-			</Routes>
+				</Routes>
 			</Flex>
 		</AppContainer>
 	)
