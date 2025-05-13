@@ -1,11 +1,6 @@
 
+import type { ButtonProps } from "@types";
 import { css, styled } from "styled-components";
-
-interface ButtonProps {
-	prefix?: string;
-	children?: React.ReactNode;
-	$isActive?: boolean;
-}
 
 const StyledButton = styled.button<ButtonProps>`
   padding: 0 16px 0 12px;

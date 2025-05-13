@@ -19,18 +19,18 @@ const FooterLink = styled.a`
 
 export const Footer = () => {
 
-	const baseUrl: string = import.meta.env.VITE_API_BASE_URL;
+	const baseURL: string = import.meta.env.VITE_API_BASE_URL;
 
 	return (
 		<StyledFooter>
 			<Flex $height="50px" $justify="space-between" $align="center" $margin="0 370px">
-				<FooterLink href={`${baseUrl}/character`} target="_blank" rel="noopener noreferrer">
+				<FooterLink href={`${baseURL}/character`} target="_blank" rel="noopener noreferrer">
 					characters 826
 				</FooterLink>
-				<FooterLink href={`${baseUrl}/location`} target="_blank" rel="noopener noreferrer">
+				<FooterLink href={`${baseURL}/location`} target="_blank" rel="noopener noreferrer">
 					locations 126
 				</FooterLink>
-				<FooterLink href={`${baseUrl}/episode`} target="_blank" rel="noopener noreferrer">
+				<FooterLink href={`${baseURL}/episode`} target="_blank" rel="noopener noreferrer">
 					episodes 51
 				</FooterLink>
 			</Flex>

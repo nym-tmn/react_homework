@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import homePageImage from '@assets/images/home_page_image.webp'
-import { ContentTitle, Flex } from '@components'
+import { ContentTitle, CustomImage, Flex } from '@components'
 
 const StyledHomePageContainer = ({ className }: { className?: string }) => {
 	return (
@@ -11,7 +11,9 @@ const StyledHomePageContainer = ({ className }: { className?: string }) => {
 		$align="center"
 		>
 			<ContentTitle $fontSize='44px' $marginBottom='30px'>Wubba Lubba Dub Dub</ContentTitle>
-			<img src={homePageImage} alt="Home page main image" />
+			<CustomImage>
+				<img src={homePageImage} alt="Home page main image" />
+			</CustomImage>
 		</Flex>
 	);
 };

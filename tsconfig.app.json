@@ -34,6 +34,10 @@
 			"@layouts/*": ["./layouts/*"],
 			"@pages": ["./pages"],
 			"@pages/*": ["./pages/*"],
+			"@api": ["./api"],
+			"@api/*": ["./api/*"],
+			"@types": ["./types"],
+			"@types/*": ["./types/*"],
 		}
 	},
 	"include": [
