@@ -1,3 +1,6 @@
+export type { LocationsType, LocationType } from './api/locations';
+export type { ResponseType } from './api/common';
+export type {	CharactersType,	CharacterType} from './api/characters';
 export type {
 	ButtonProps,
 	ContentTitleProps,
@@ -5,8 +8,3 @@ export type {
 	CustomImageProps,
 	PaginationProps
 } from './components/props';
-export type {
-	ResponseCharactersType,
-	CharactersType,
-	CharacterType
-} from './api/characters';

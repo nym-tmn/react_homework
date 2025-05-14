@@ -7,7 +7,7 @@ import { Character } from "./Character/Character";
 
 const StyledCharactersContainer = styled.div`
 flex: 1 1 auto;
-`
+`;
 
 export const CharactersPage = () => {
 
