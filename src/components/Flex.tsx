@@ -1,5 +1,5 @@
-import type { FlexProps } from "@types";
 import styled from "styled-components"
+import type { FlexProps } from "@types";
 
 const StyledFlex = styled.div<FlexProps>`
 display: flex;

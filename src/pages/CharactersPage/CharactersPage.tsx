@@ -1,38 +1,49 @@
+import { useCallback, useEffect, useState } from "react"
+import styled from "styled-components";
 import { getCharacters } from "@api"
-import { ContentTitle, Flex } from "@components"
+import { ContentTitle, Flex, Pagination } from "@components"
 import type { CharactersType } from "@types";
-import { useEffect, useState } from "react"
 import { Character } from "./Character/Character";
+
+const StyledCharactersContainer = styled.div`
+flex: 1 1 auto;
+`
 
 export const CharactersPage = () => {
 
 	const [characters, setCharacters] = useState<CharactersType | null>(null);
+	const [currentPage, setCurrentPage] = useState(1);
+	const [pages, setPages] = useState(0);
 
-	const getAxiosCharacters = async () => {
+	const getAxiosCharacters = useCallback(async () => {
 		try {
-			const characters = await getCharacters();
-			setCharacters(characters);
+			const { info, results } = await getCharacters(currentPage);
+			setCharacters(results);
+			setPages(prevPages => prevPages !== info.pages ? info.pages : prevPages);
 		} catch (error) {
 			if (error instanceof Error) {
 				console.error(error.message);
 			}
 		}
-	}
+	}, [currentPage])
 
 	useEffect(() => {
 		getAxiosCharacters();
-	}, [])
+	}, [getAxiosCharacters])
 
 	return (
-		<Flex $direction="column" $align="center" $margin="0 20px 10px 20px">
+		<>
 			<ContentTitle $fontSize="28px" $marginBottom="20px" $maxWidth="200px">
 				Characters
 			</ContentTitle>
-			<Flex $justify="center" $wrap="wrap" $gap="20px">
-				{characters && characters.map(character => <Character key={character.id} name={character.name} image={character.image} />)}
-			</Flex>
-		</Flex>
+			<StyledCharactersContainer>
+				<Flex $justify="center" $wrap="wrap" $gap="20px" $margin="0 0 10px 0">
+					{characters && characters
+						.map(character =>
+							<Character key={character.id} name={character.name} image={character.image} />)}
+				</Flex>
+			</StyledCharactersContainer>
+			<Pagination pages={pages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+		</>
 	)
 }
-
-// useCallback

@@ -2,6 +2,8 @@ export interface ButtonProps {
 	prefix?: string;
 	children?: React.ReactNode;
 	$isActive?: boolean;
+	$maxWidth?: string;
+	onClick?: () => void;
 }
 
 export interface ContentTitleProps {
@@ -31,4 +33,10 @@ export interface CustomImageProps {
 	children?: React.ReactNode;
 	$borderRadius?: string;
 	$maxWidth?: string;
+}
+
+export interface PaginationProps {
+	pages: number;
+	currentPage: number;
+	setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 }

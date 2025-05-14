@@ -1,7 +1,8 @@
-import type { ContentTitleProps } from "@types";
 import styled from "styled-components";
+import type { ContentTitleProps } from "@types";
 
 const StyledContentTitle = styled.div<ContentTitleProps>`
+overflow-wrap: break-word;
 font-weight: 600;
 font-size: ${({ $fontSize }) => $fontSize || '16px'};
 margin-bottom: ${({ $marginBottom }) => $marginBottom || '0'};

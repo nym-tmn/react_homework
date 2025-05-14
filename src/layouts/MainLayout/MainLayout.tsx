@@ -8,6 +8,7 @@ const StyledMainContentContainer = ({ className }: { className?: string }) => {
 		<Flex
 			className={className}
 			$direction="column"
+			$align="center"
 		>
 			<Outlet />
 		</Flex>
@@ -16,6 +17,7 @@ const StyledMainContentContainer = ({ className }: { className?: string }) => {
 
 const StyledMainContent = styled(StyledMainContentContainer)`
   flex: 1 1 auto;
+	margin: 0 20px;
 `;
 
 export const MainLayout = () => {

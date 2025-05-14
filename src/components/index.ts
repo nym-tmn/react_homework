@@ -1,3 +1,4 @@
+export { Pagination } from "./Pagination";
 export { CustomImage } from "./CustomImage";
 export { Flex } from "./Flex";
 export { ContentTitle } from "./ContentTitle";

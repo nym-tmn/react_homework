@@ -1,10 +1,12 @@
-
-import type { ButtonProps } from "@types";
 import { css, styled } from "styled-components";
+import type { ButtonProps } from "@types";
 
 const StyledButton = styled.button<ButtonProps>`
-  padding: 0 16px 0 12px;
-	line-height: 2.3;
+	display: inline-flex;
+	justify-content: center;
+  padding: 0 16px;
+  max-width: ${({ $maxWidth }) => $maxWidth || 'none'};
+  line-height: 2.3;
   border: none;
   border-radius: 6px;
   background-color: #4fb342;
@@ -17,18 +19,18 @@ const StyledButton = styled.button<ButtonProps>`
     background-color: #35782c;
   }
 
-	${({ $isActive }) => $isActive && css`
-		background-color: #4fbaf0;
-		&:hover {
+  ${({ $isActive }) => $isActive && css`
     background-color: #4fbaf0;
-  }
-		`}
+    &:hover {
+      background-color: #4fbaf0;
+    }
+  `}
 `;
 
-export const Button: React.FC<ButtonProps> = ({ children, ...props }) => {
+export const Button: React.FC<ButtonProps> = ({ children, onClick, ...props }) => {
 
 	return (
-		<StyledButton {...props}>
+		<StyledButton onClick={onClick} {...props}>
 			{props.prefix && <span>{props.prefix}</span>}
 			{children}
 		</StyledButton>
