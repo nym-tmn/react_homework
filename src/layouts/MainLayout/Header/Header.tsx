@@ -10,7 +10,7 @@ margin-bottom: 25px;
 
 export const Header = () => {
 
-	const [time, setTime] = useState(new Date());
+	const [time, setTime] = useState(() => new Date());
 
 	useEffect(() => {
 		const timeId = setInterval(() => {

@@ -1,13 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
-import { styled } from "styled-components";
 import { getLocations } from "@api";
 import type { LocationsType } from "@types";
 import { LocationItem } from "./Location/LocationItem";
-import { ContentTitle, Flex, Pagination } from "@components";
-
-const StyledLocationsPageContainer = styled.div`
-flex: 1 1 auto;
-`;
+import { ContentTitle, Flex, Pagination, SectionStyles } from "@components";
 
 export const LocationsPage = () => {
 
@@ -36,13 +31,13 @@ export const LocationsPage = () => {
 			<ContentTitle $fontSize="28px" $marginBottom="20px" $maxWidth="200px">
 				Locations
 			</ContentTitle>
-			<StyledLocationsPageContainer>
+			<SectionStyles>
 				<Flex $justify="center" $wrap="wrap" $gap="20px" $margin="0 0 20px 0">
 					{locations && locations
 						.map(location =>
 							<LocationItem key={location.id} name={location.name} dimension={location.dimension} type={location.type} />)}
 				</Flex>
-			</StyledLocationsPageContainer>
+			</SectionStyles>
 			<Pagination pages={pages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
 		</>
 	)

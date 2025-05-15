@@ -12,7 +12,9 @@ export interface ContentTitleProps {
 	$marginTop?: string;
 	$maxWidth?: string;
 	$textAlign?: string;
+	$color?: string;
 	children?: React.ReactNode;
+	as?: React.ElementType;
 }
 
 export interface FlexProps {

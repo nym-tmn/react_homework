@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import type { CustomImageProps } from "@types";
 
-const StyledCustomImage = styled.div<CustomImageProps>`
+const StyledCustomImage = styled.figure<CustomImageProps>`
 overflow: hidden;
 border-radius: ${({ $borderRadius }) => $borderRadius || '0'};
 

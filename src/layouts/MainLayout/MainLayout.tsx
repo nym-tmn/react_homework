@@ -6,6 +6,7 @@ import { Flex } from "@components";
 const StyledMainContentContainer = ({ className }: { className?: string }) => {
 	return (
 		<Flex
+			as={'main'}
 			className={className}
 			$direction="column"
 			$align="center"

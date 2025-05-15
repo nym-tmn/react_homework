@@ -1,13 +1,8 @@
 import { useCallback, useEffect, useState } from "react"
-import styled from "styled-components";
 import { getCharacters } from "@api"
-import { ContentTitle, Flex, Pagination } from "@components"
+import { ContentTitle, Flex, Pagination, SectionStyles } from "@components"
 import type { CharactersType } from "@types";
 import { Character } from "./Character/Character";
-
-const StyledCharactersContainer = styled.div`
-flex: 1 1 auto;
-`;
 
 export const CharactersPage = () => {
 
@@ -36,13 +31,13 @@ export const CharactersPage = () => {
 			<ContentTitle $fontSize="28px" $marginBottom="20px" $maxWidth="200px">
 				Characters
 			</ContentTitle>
-			<StyledCharactersContainer>
+			<SectionStyles>
 				<Flex $justify="center" $wrap="wrap" $gap="20px" $margin="0 0 10px 0">
 					{characters && characters
 						.map(character =>
 							<Character key={character.id} name={character.name} image={character.image} />)}
 				</Flex>
-			</StyledCharactersContainer>
+			</SectionStyles>
 			<Pagination pages={pages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
 		</>
 	)

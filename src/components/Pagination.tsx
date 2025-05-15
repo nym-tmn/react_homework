@@ -19,7 +19,7 @@ export const Pagination: React.FC<PaginationProps> = ({ pages, currentPage, setC
 	const nextPagesPortion = portionCount * pagesPortion;
 
 	return (
-		<Flex $margin="0 0 18px 0" $gap="5px">
+		<Flex as={'nav'} $margin="0 0 18px 0" $gap="5px">
 			{pages > 0 &&
 				<>
 					{portionCount > 1 &&

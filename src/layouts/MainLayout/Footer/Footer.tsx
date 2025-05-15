@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { Flex } from "@components"
 
-const StyledFooter = styled.div`
+const StyledFooter = styled.footer`
 background-color: black;
 color: white;
 font-size: 14px;
