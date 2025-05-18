@@ -26,14 +26,14 @@ const StyledButton = styled.button<ButtonProps>`
   line-height: 2.3;
   border: none;
   border-radius: 6px;
-  background-color: #4fb342;
+  background-color: ${({ $backgroundColor }) => $backgroundColor || '#4fb342'};
   color: white;
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.2s;
 
   &:hover {
-    background-color: #35782c;
+		background-color: ${({ $backgroundColorHover }) => $backgroundColorHover || '#35782c'};
   }
 
   ${({ $isActive }) => $isActive && css`

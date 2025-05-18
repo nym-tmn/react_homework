@@ -6,6 +6,8 @@ export interface ButtonProps {
 	$isActive?: boolean;
 	$maxWidth?: string;
 	$isCharacter?: boolean;
+	$backgroundColor?: string;
+	$backgroundColorHover?: string;
 	onClick?: () => void;
 }
 

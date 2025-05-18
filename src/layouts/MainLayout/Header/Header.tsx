@@ -1,5 +1,5 @@
 import { styled } from "styled-components"
-import { Flex } from "@components"
+import { Flex, ThemeToggle } from "@components"
 import { Clock, Logo, Title } from "@layouts"
 import React from "react";
 
@@ -40,7 +40,10 @@ export class Header extends React.Component<object, HeaderState> {
 				<Flex $justify="space-between" $align="center" $margin="0 20px" $height="100px">
 					<Logo />
 					<Title />
-					<Clock time={this.state.time} />
+					<Flex $direction="column" $gap="10px">
+						<Clock time={this.state.time} />
+						<ThemeToggle/>
+					</Flex>
 				</Flex>
 			</StyledHeader>
 		)

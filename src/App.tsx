@@ -3,8 +3,10 @@ import styled from "styled-components"
 import { MainLayout } from "@layouts"
 import { CharactersPage, EmptyPage, EpisodesPage, HomePage, LocationsPage } from "@pages"
 import { Flex } from "@components"
+import { useTheme } from "@hooks"
 
 const StyledAppContainer = ({ className }: { className?: string }) => {
+
 	return (
 		<Flex
 			className={className}
@@ -24,14 +26,18 @@ const StyledAppContainer = ({ className }: { className?: string }) => {
 	);
 };
 
-const StyledApp = styled(StyledAppContainer)`
+const StyledApp = styled(StyledAppContainer) <{ $darkTheme?: boolean }>`
   max-width: 1280px;
-width: 100%;
-margin: 0 auto;
-background-color: white;
+	width: 100%;
+	margin: 0 auto;
+	background-color: ${() => {
+		const { darkTheme } = useTheme();
+		return darkTheme ? 'gray' : 'white';
+	}};
 `;
 
 const App = () => {
+
 	return (
 		<StyledApp />
 	)

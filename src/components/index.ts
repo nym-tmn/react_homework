@@ -1,3 +1,4 @@
+export { ThemeToggle } from "./ThemeToggle";
 export { Pagination } from "./Pagination";
 export { CustomImage } from "./CustomImage";
 export { Flex } from "./Flex";

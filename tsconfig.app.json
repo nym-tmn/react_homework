@@ -40,6 +40,10 @@
 			"@types/*": ["./types/*"],
 			"@hooks": ["./hooks"],
 			"@hooks/*": ["./hooks/*"],
+			"@providers": ["./providers"],
+			"@providers/*": ["./providers/*"],
+			"@context": ["./context"],
+			"@context/*": ["./context/*"],
 		}
 	},
 	"include": [

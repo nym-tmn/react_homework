@@ -15,6 +15,8 @@ export default defineConfig({
 			'@api': path.resolve('src/api'),
 			'@types': path.resolve('src/types'),
 			'@hooks': path.resolve('src/hooks'),
+			'@providers': path.resolve('src/providers'),
+			'@context': path.resolve('src/context'),
 		}
 	}
 })
