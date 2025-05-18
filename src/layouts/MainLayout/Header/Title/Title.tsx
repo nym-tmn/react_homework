@@ -1,3 +1,4 @@
+import React from "react";
 import { NavLink } from "react-router";
 import { styled } from "styled-components"
 
@@ -6,10 +7,11 @@ font-weight: 600;
 font-size: 34px;
 `;
 
-export const Title = () => {
+export const Title = React.memo(() => {
+
 	return (
 		<StyledTitle>
 			<NavLink to="/">Rick and Morty API</NavLink>
 		</StyledTitle>
 	)
-}
+})
