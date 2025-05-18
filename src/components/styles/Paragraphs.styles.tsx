@@ -5,6 +5,6 @@ export const ParagraphsStyles = styled.p`
   color: #333;
   
   &:first-child {
-    font-weight: bold;
+    font-weight: 600;
   }
 `;

@@ -38,6 +38,8 @@
 			"@api/*": ["./api/*"],
 			"@types": ["./types"],
 			"@types/*": ["./types/*"],
+			"@hooks": ["./hooks"],
+			"@hooks/*": ["./hooks/*"],
 		}
 	},
 	"include": [

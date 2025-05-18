@@ -7,9 +7,4 @@ border-radius: 8px;
 padding: 16px;
 flex: 1 1 300px;
 background-color: #98fa8c;
-
-// & > *:nth-last-child(-n+2) {
-    // justify-items: flex-start;
-		// margin-right: auto;
-  // }
 `;

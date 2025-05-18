@@ -3,9 +3,9 @@ import type { CustomImageProps } from "@types";
 
 const StyledCustomImage = styled.figure<CustomImageProps>`
 overflow: hidden;
-border-radius: ${({ $borderRadius }) => $borderRadius || '0'};
 
 img {
+border-radius: ${({ $borderRadius }) => $borderRadius || '0'};
 max-width: ${({ $maxWidth }) => $maxWidth || 'auto'};
 }
 `;

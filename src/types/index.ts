@@ -7,5 +7,7 @@ export type {
 	ContentTitleProps,
 	FlexProps,
 	CustomImageProps,
-	PaginationProps
+	PaginationProps,
+	CharacterProps,
+	ModalProps,
 } from './components/props';

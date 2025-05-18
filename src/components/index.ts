@@ -6,3 +6,4 @@ export { Button } from "./Button";
 export { ParagraphsStyles } from "./styles/Paragraphs.styles";
 export { InfoCardStyles } from "./styles/InfoCard.styles";
 export { SectionStyles } from "./styles/Section.styles";
+export { Modal } from "./Modal";

@@ -1,8 +1,11 @@
+import type { CharacterType } from "@types";
+
 export interface ButtonProps {
 	prefix?: string;
 	children?: React.ReactNode;
 	$isActive?: boolean;
 	$maxWidth?: string;
+	$isCharacter?: boolean;
 	onClick?: () => void;
 }
 
@@ -41,4 +44,16 @@ export interface PaginationProps {
 	pages: number;
 	currentPage: number;
 	setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+}
+
+export type CharacterProps = {
+	name: string;
+	image: string;
+	onClick: () => void;
+}
+
+export interface ModalProps {
+	character: CharacterType | null;
+	isOpenModal: boolean;
+	onClick: () => void;
 }
