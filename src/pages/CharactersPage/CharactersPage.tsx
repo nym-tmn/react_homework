@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 import { getCharacters } from "@api"
-import { ContentTitle, Flex, Modal, Pagination, SectionStyles } from "@components"
+import { Button, ContentTitle, Flex, Modal, Pagination, SectionStyles } from "@components"
 import { Character } from "./Character/Character";
 import type { CharactersType, CharacterType } from "@types";
 
@@ -29,6 +29,21 @@ export const CharactersPage = () => {
 		setIsOpenModal(prev => !prev);
 	}, []);
 
+	const charactersList = useMemo(() => {
+		if (!characters) return null;
+		return characters.map(character => 
+			<Button
+				key={character.id}
+				$isCharacter={true}
+				onClick={() => handleSetCharacterClick(character)}>
+				<Character
+					name={character.name}
+					image={character.image}
+				/>
+			</Button>
+		)
+	}, [characters, handleSetCharacterClick])
+
 	useEffect(() => {
 		getAxiosCharacters();
 	}, [getAxiosCharacters])
@@ -40,15 +55,7 @@ export const CharactersPage = () => {
 			</ContentTitle>
 			<SectionStyles>
 				<Flex $justify="center" $wrap="wrap" $gap="20px" $margin="0 0 10px 0">
-					{characters && characters
-						.map(character =>
-							<Character
-								key={character.id}
-								name={character.name}
-								image={character.image}
-								onClick={() => handleSetCharacterClick(character)}
-							/>
-						)}
+					{charactersList}
 				</Flex>
 			</SectionStyles>
 			<Pagination pages={pages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
