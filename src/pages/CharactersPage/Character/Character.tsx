@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { /* Button, */ CustomImage } from "@components"
+import { CustomImage } from "@components"
 import type { CharacterProps } from "@types"
 import React from "react";
 
@@ -19,16 +19,9 @@ overflow-wrap: break-word;
 export const Character: React.FC<CharacterProps> = React.memo(({
 	name,
 	image,
-	// onClick,
 }) => {
 
-	console.log('ddd');
-	// console.log(name);
-	// console.log(image);
-	
-
 	return (
-			// <Button $isCharacter={true} onClick={onClick}>
 				<StyedCharacter>
 					<CustomImage $borderRadius="15px" $maxWidth="200px">
 						<img src={image} alt="Character image" />
@@ -37,6 +30,5 @@ export const Character: React.FC<CharacterProps> = React.memo(({
 						</StyledFigcaption>
 					</CustomImage>
 				</StyedCharacter>
-			// </Button>
 	)
 })

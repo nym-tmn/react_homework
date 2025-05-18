@@ -49,7 +49,6 @@ export interface PaginationProps {
 export type CharacterProps = {
 	name: string;
 	image: string;
-	// onClick: () => void;
 }
 
 export interface ModalProps {
