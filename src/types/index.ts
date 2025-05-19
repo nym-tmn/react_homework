@@ -10,4 +10,5 @@ export type {
 	PaginationProps,
 	CharacterProps,
 	ModalProps,
+	CustomnInputProps
 } from './components/props';

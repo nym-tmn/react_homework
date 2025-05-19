@@ -58,3 +58,9 @@ export interface ModalProps {
 	isOpenModal: boolean;
 	onClick: () => void;
 }
+
+export interface CustomnInputProps {
+	$alignSelf?: string;
+	$marginBottom?: string;
+	children?: React.ReactNode;
+}

@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import pageNotFoundImage from '@assets/images/page_not_found_image.webp'
+import failedImage from '@assets/images/failedImage.webp'
 import { ContentTitle, CustomImage, Flex } from "@components"
 
 const EmptyPageContainer = ({ className }: { className?: string }) => {
@@ -13,7 +13,7 @@ const EmptyPageContainer = ({ className }: { className?: string }) => {
 			<ContentTitle $fontSize="44px" $marginBottom="20px">404</ContentTitle>
 			<p>It seems that such a page does not exist</p>
 			<CustomImage>
-				<img src={pageNotFoundImage} alt="Page not found" />
+				<img src={failedImage} alt="Page not found" />
 			</CustomImage>
 		</Flex>
 	);

@@ -1,3 +1,4 @@
+export { CustomnInput } from "./CustomInput";
 export { ThemeToggle } from "./ThemeToggle";
 export { Pagination } from "./Pagination";
 export { CustomImage } from "./CustomImage";

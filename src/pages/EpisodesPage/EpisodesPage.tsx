@@ -1,14 +1,17 @@
 import { useCallback, useEffect, useState } from "react";
+import axios from "axios";
 import { getEpisodes } from "@api";
-import { ContentTitle, Flex, Pagination, SectionStyles } from "@components";
+import { ContentTitle, CustomImage, Flex, Pagination, SectionStyles } from "@components";
 import type { EpisodesType } from "@types";
 import { Episode } from "./Episode/Episode";
+import failedImage from '@assets/images/failedImage.webp';
 
 export const EpisodesPage = () => {
 
 	const [episodes, setEpisodes] = useState<EpisodesType | null>(null);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [pages, setPages] = useState(0);
+	const [error, setError] = useState<string | null>(null);
 
 	const getAxiosEpisodes = useCallback(async () => {
 		try {
@@ -16,8 +19,16 @@ export const EpisodesPage = () => {
 			setEpisodes(results);
 			setPages(prevPages => prevPages !== info.pages ? info.pages : prevPages);
 		} catch (error) {
-			if (error instanceof Error) {
+			if (axios.isAxiosError(error)) {
+				if (error.response?.status === 404) {
+					setError("Failed to load episodes.");
+				}
+			} else if (error instanceof Error) {
 				console.error(error.message);
+				setError("An unexpected error occurred");
+			} else {
+				console.error('Unknown error:', error);
+				setError("Something went wrong");
 			}
 		}
 	}, [currentPage])
@@ -31,14 +42,27 @@ export const EpisodesPage = () => {
 			<ContentTitle $fontSize="28px" $marginBottom="20px" $maxWidth="200px">
 				Episodes
 			</ContentTitle>
-			<SectionStyles>
-				<Flex $justify="center" $wrap="wrap" $gap="20px" $margin="0 0 20px 0">
-					{episodes && episodes
-						.map(episode =>
-							<Episode key={episode.id} name={episode.name} episode={episode.episode} air_date={episode.air_date} />)}
-				</Flex>
-			</SectionStyles>
-			<Pagination pages={pages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+			{error ? (
+				<SectionStyles>
+					<Flex $direction="column" $justify="center" $align="center" $minHeight="200px">
+						<ContentTitle $fontSize="32px">{error}</ContentTitle>
+						<CustomImage>
+							<img src={failedImage} alt="Unsuccessful request" />
+						</CustomImage>
+					</Flex>
+				</SectionStyles>
+			) : (
+				<>
+					<SectionStyles>
+						<Flex $justify="center" $wrap="wrap" $gap="20px" $margin="0 0 20px 0">
+							{episodes && episodes
+								.map(episode =>
+									<Episode key={episode.id} name={episode.name} episode={episode.episode} air_date={episode.air_date} />)}
+						</Flex>
+					</SectionStyles>
+					<Pagination pages={pages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+				</>
+			)}
 		</>
 	)
 }
