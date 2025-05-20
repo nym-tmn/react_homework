@@ -5,7 +5,7 @@ export interface ButtonProps {
 	children?: React.ReactNode;
 	$isActive?: boolean;
 	$maxWidth?: string;
-	$isCharacter?: boolean;
+	$isAnimate?: boolean;
 	$backgroundColor?: string;
 	$backgroundColorHover?: string;
 	onClick?: () => void;
@@ -31,6 +31,7 @@ export interface FlexProps {
 	$minHeight?: string;
 	$wrap?: string;
 	$gap?: string;
+	$minWidth?: string;
 	className?: string;
 	children?: React.ReactNode;
 	as?: React.ElementType;

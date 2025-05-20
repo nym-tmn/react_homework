@@ -40,7 +40,7 @@ export class Header extends React.Component<object, HeaderState> {
 				<Flex $justify="space-between" $align="center" $margin="0 20px" $height="100px">
 					<Logo />
 					<Title />
-					<Flex $direction="column" $gap="10px">
+					<Flex $minWidth="80px" $direction="column" $gap="5px">
 						<Clock time={this.state.time} />
 						<ThemeToggle/>
 					</Flex>

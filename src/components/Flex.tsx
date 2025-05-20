@@ -11,6 +11,7 @@ height: ${({ $height }) => $height || 'auto'};
 min-height: ${({ $minHeight }) => $minHeight || 'auto'};
 flex-wrap: ${({ $wrap }) => $wrap || 'nowrap'};
 gap: ${({ $gap }) => $gap || '0'};
+min-width: ${({ $minWidth }) => $minWidth || 'auto'};
 `;
 
 export const Flex: React.FC<FlexProps> = ({as, ...props}) => {

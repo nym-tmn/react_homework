@@ -26,7 +26,7 @@ const StyledButton = styled.button<ButtonProps>`
   line-height: 2.3;
   border: none;
   border-radius: 6px;
-  background-color: ${({ $backgroundColor }) => $backgroundColor || '#4fb342'};
+  background-color: #4fb342;
   color: white;
   font-size: 16px;
   cursor: pointer;
@@ -43,8 +43,9 @@ const StyledButton = styled.button<ButtonProps>`
     }
   `}
 
-  ${({ $isCharacter }) => $isCharacter && css`
+  ${({ $isAnimate }) => $isAnimate && css`
 		${reset}
+		align-self: center;
 		transition: transform 0.3s ease, box-shadow 0.3s ease;
     &:hover {
     transform: scale(1.05);

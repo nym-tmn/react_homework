@@ -1,12 +1,14 @@
 import { useCallback, useEffect, useMemo, useState, type ChangeEvent } from "react"
 import axios from "axios";
+import { styled } from "styled-components";
 import { getCharacters, getFiltredCharacters } from "@api"
 import { Button, ContentTitle, CustomImage, CustomnInput, Flex, Modal, Pagination, SectionStyles } from "@components"
 import { Character } from "./Character/Character";
 import type { CharactersType, CharacterType } from "@types";
 import failedImage from '@assets/images/failedImage.webp';
+import loadingImage from '@assets/images/loading.webp';
 
-export const CharactersPage = () => {
+const CharactersPageContainer = ({ className }: { className?: string }) => {
 
 	const [characters, setCharacters] = useState<CharactersType | null>(null);
 	const [currentPage, setCurrentPage] = useState(1);
@@ -14,10 +16,12 @@ export const CharactersPage = () => {
 	const [isOpenModal, setIsOpenModal] = useState(false);
 	const [selectedCharacter, setSelectedCharacter] = useState<CharacterType | null>(null);
 	const [searchInputValue, setsearchInputValue] = useState('');
+	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 
 	const getAxiosCharacters = useCallback(async () => {
 		try {
+			setIsLoading(prevIsLoading => !prevIsLoading);
 			setError(null);
 			const pageToFetch = searchInputValue ? 1 : currentPage;
 			const { info, results } = searchInputValue
@@ -25,8 +29,11 @@ export const CharactersPage = () => {
 				: await getCharacters(pageToFetch);
 
 			setCharacters(results);
-			setPages(info.pages);
+			// setPages(info.pages);
+			setPages(prevPages => prevPages !== info.pages ? info.pages : prevPages);
+			setIsLoading(prevIsLoading => !prevIsLoading);
 		} catch (error) {
+			setIsLoading(prevIsLoading => !prevIsLoading);
 			if (axios.isAxiosError(error)) {
 				if (error.response?.status === 404) {
 					setError(searchInputValue
@@ -53,7 +60,7 @@ export const CharactersPage = () => {
 		return characters.map(character =>
 			<Button
 				key={character.id}
-				$isCharacter={true}
+				$isAnimate={true}
 				onClick={() => handleSetCharacterClick(character)}>
 				<Character
 					name={character.name}
@@ -73,51 +80,68 @@ export const CharactersPage = () => {
 		getAxiosCharacters();
 	}, [getAxiosCharacters])
 
-	return (
-		<>
-			<ContentTitle $fontSize="28px" $marginBottom="10px" $maxWidth="200px">
-				Characters
-			</ContentTitle>
-			<CustomnInput $alignSelf="flex-start" $marginBottom="10px">
-				<Flex $gap="10px">
-					<label htmlFor="searchByName">
-						Search by name:
-					</label>
-					<input
-						id="searchByName"
-						type="text"
-						value={searchInputValue}
-						onChange={handleInputChange}
-					/>
-				</Flex>
-			</CustomnInput>
 
-			{error ? (
-				<SectionStyles>
-					<Flex $direction="column" $justify="center" $align="center" $minHeight="200px">
-						<ContentTitle $fontSize="32px">{error}</ContentTitle>
-						<CustomImage>
-							<img src={failedImage} alt="Unsuccessful request" />
-						</CustomImage>
-					</Flex>
-				</SectionStyles>
-			) : (
+	return (
 				<>
-					<SectionStyles>
-						<Flex $justify="center" $wrap="wrap" $gap="20px" $margin="0 0 10px 0">
-							{charactersList}
+					<ContentTitle $fontSize="28px" $marginBottom="10px" $maxWidth="200px">
+						Characters
+					</ContentTitle>
+					<CustomnInput $alignSelf="flex-start" $marginBottom="10px">
+						<Flex $gap="10px">
+							<label htmlFor="searchByName">
+								Search by name:
+							</label>
+							<input
+								id="searchByName"
+								type="text"
+								value={searchInputValue}
+								onChange={handleInputChange}
+							/>
 						</Flex>
-					</SectionStyles>
-					<Pagination pages={pages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+					</CustomnInput>
+			<Flex
+				className={className}
+				$direction="column"
+				$justify="center"
+				$align="center"
+			>
+	
+					{isLoading ? (
+							<Flex $direction="column" $justify="center" $align="center">
+						<ContentTitle $marginBottom="40px" $fontSize="22px">Loading...</ContentTitle>
+								<CustomImage>
+									<img src={loadingImage} alt="" />
+								</CustomImage>
+							</Flex>
+					) : error ? (
+							<Flex $direction="column" $justify="center" $align="center">
+								<ContentTitle $fontSize="32px">{error}</ContentTitle>
+								<CustomImage>
+									<img src={failedImage} alt="Unsuccessful request" />
+								</CustomImage>
+							</Flex>
+					) : (
+						<>
+							<SectionStyles>
+								<Flex $justify="center" $wrap="wrap" $gap="20px" $margin="0 0 10px 0">
+									{charactersList}
+								</Flex>
+							</SectionStyles>
+							<Pagination pages={pages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+						</>
+					)}
+					{selectedCharacter && (
+						<Modal
+							character={selectedCharacter}
+							isOpenModal={isOpenModal}
+							onClick={() => handleSetCharacterClick(null)}
+						/>
+					)}
+			</Flex>
 				</>
-			)}
-			{selectedCharacter && (
-				<Modal
-					character={selectedCharacter}
-					isOpenModal={isOpenModal}
-					onClick={() => handleSetCharacterClick(null)}
-				/>
-			)}
-		</>
-	)
-}
+	);
+};
+
+export const CharactersPage = styled(CharactersPageContainer)`
+  flex: 1 1 auto;
+`;
