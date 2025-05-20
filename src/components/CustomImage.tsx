@@ -6,7 +6,7 @@ overflow: hidden;
 
 img {
 border-radius: ${({ $borderRadius }) => $borderRadius || '0'};
-max-width: ${({ $maxWidth }) => $maxWidth || 'auto'};
+max-width: ${({ $maxWidth }) => $maxWidth || 'none'};
 }
 `;
 

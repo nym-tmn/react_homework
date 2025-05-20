@@ -20,7 +20,7 @@ export const Modal: React.FC<ModalProps> = ({
 	isOpenModal,
 	onClick,
 }) => {
-	
+
 	const refDialog = useRef<HTMLDialogElement>(null);
 
 	const portalElement = usePortal();

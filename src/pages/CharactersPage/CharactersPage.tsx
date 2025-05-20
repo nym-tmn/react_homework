@@ -29,8 +29,7 @@ const CharactersPageContainer = ({ className }: { className?: string }) => {
 				: await getCharacters(pageToFetch);
 
 			setCharacters(results);
-			// setPages(info.pages);
-			setPages(prevPages => prevPages !== info.pages ? info.pages : prevPages);
+			setPages(info.pages);
 			setIsLoading(prevIsLoading => !prevIsLoading);
 		} catch (error) {
 			setIsLoading(prevIsLoading => !prevIsLoading);
@@ -80,65 +79,68 @@ const CharactersPageContainer = ({ className }: { className?: string }) => {
 		getAxiosCharacters();
 	}, [getAxiosCharacters])
 
-
 	return (
-				<>
-					<ContentTitle $fontSize="28px" $marginBottom="10px" $maxWidth="200px">
-						Characters
-					</ContentTitle>
-					<CustomnInput $alignSelf="flex-start" $marginBottom="10px">
-						<Flex $gap="10px">
-							<label htmlFor="searchByName">
-								Search by name:
-							</label>
-							<input
-								id="searchByName"
-								type="text"
-								value={searchInputValue}
-								onChange={handleInputChange}
-							/>
-						</Flex>
-					</CustomnInput>
+		<>
+			<ContentTitle $fontSize="28px" $marginBottom="10px" $maxWidth="200px">
+				Characters
+			</ContentTitle>
+			<CustomnInput $alignSelf="flex-start" $marginBottom="10px">
+				<Flex $gap="10px">
+					<label htmlFor="searchByName">
+						Search by name:
+					</label>
+					<input
+						id="searchByName"
+						type="text"
+						value={searchInputValue}
+						onChange={handleInputChange}
+					/>
+				</Flex>
+			</CustomnInput>
 			<Flex
 				className={className}
 				$direction="column"
-				$justify="center"
+				$justify="space-between"
 				$align="center"
 			>
-	
-					{isLoading ? (
-							<Flex $direction="column" $justify="center" $align="center">
-						<ContentTitle $marginBottom="40px" $fontSize="22px">Loading...</ContentTitle>
-								<CustomImage>
-									<img src={loadingImage} alt="" />
-								</CustomImage>
+
+				{isLoading ? (
+					<SectionStyles $display="flex">
+						<Flex $direction="column" $justify="center" $align="center">
+							<ContentTitle as={'h3'} $marginBottom="40px" $fontSize="22px">Loading...</ContentTitle>
+							<CustomImage>
+								<img src={loadingImage} alt="Loading image" />
+							</CustomImage>
+						</Flex>
+					</SectionStyles>
+				) : error ? (
+					<SectionStyles $display="flex">
+						<Flex $direction="column" $justify="center" $align="center">
+							<ContentTitle as={'h3'} $fontSize="32px">{error}</ContentTitle>
+							<CustomImage>
+								<img src={failedImage} alt="Unsuccessful request" />
+							</CustomImage>
+						</Flex>
+					</SectionStyles>
+				) : (
+					<>
+						<SectionStyles>
+							<Flex $justify="center" $wrap="wrap" $gap="20px" $margin="0 0 10px 0">
+								{charactersList}
 							</Flex>
-					) : error ? (
-							<Flex $direction="column" $justify="center" $align="center">
-								<ContentTitle $fontSize="32px">{error}</ContentTitle>
-								<CustomImage>
-									<img src={failedImage} alt="Unsuccessful request" />
-								</CustomImage>
-							</Flex>
-					) : (
-						<>
-							<SectionStyles>
-								<Flex $justify="center" $wrap="wrap" $gap="20px" $margin="0 0 10px 0">
-									{charactersList}
-								</Flex>
-							</SectionStyles>
-							<Pagination pages={pages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
-						</>
-					)}
-					{selectedCharacter && (
-						<Modal
-							character={selectedCharacter}
-							isOpenModal={isOpenModal}
-							onClick={() => handleSetCharacterClick(null)}
-						/>
-					)}
+						</SectionStyles>
+					</>
+				)}
+				<Pagination pages={pages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+				{selectedCharacter && (
+					<Modal
+						character={selectedCharacter}
+						isOpenModal={isOpenModal}
+						onClick={() => handleSetCharacterClick(null)}
+					/>
+				)}
 			</Flex>
-				</>
+		</>
 	);
 };
 

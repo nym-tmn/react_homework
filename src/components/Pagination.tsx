@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { Button, Flex } from "@components"
 import type { PaginationProps } from "@types";
+import React from "react";
 
-export const Pagination: React.FC<PaginationProps> = ({ pages, currentPage, setCurrentPage }) => {
+export const Pagination: React.FC<PaginationProps> = React.memo(({ pages, currentPage, setCurrentPage }) => {
 
 	const [portionCount, setPortionCount] = useState(1);
 
@@ -69,4 +70,4 @@ export const Pagination: React.FC<PaginationProps> = ({ pages, currentPage, setC
 				</>}
 		</Flex>
 	)
-}
+})
