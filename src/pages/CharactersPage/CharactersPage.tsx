@@ -7,6 +7,7 @@ import { Character } from "./Character/Character";
 import type { CharactersType, CharacterType } from "@types";
 import failedImage from '@assets/images/failedImage.webp';
 import loadingImage from '@assets/images/loading.webp';
+import { useDebounce } from "@hooks";
 
 const CharactersPageContainer = ({ className }: { className?: string }) => {
 
@@ -16,6 +17,7 @@ const CharactersPageContainer = ({ className }: { className?: string }) => {
 	const [isOpenModal, setIsOpenModal] = useState(false);
 	const [selectedCharacter, setSelectedCharacter] = useState<CharacterType | null>(null);
 	const [searchInputValue, setsearchInputValue] = useState('');
+	const debouncedSearchValue = useDebounce(searchInputValue, 500);
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 
@@ -23,9 +25,9 @@ const CharactersPageContainer = ({ className }: { className?: string }) => {
 		try {
 			setIsLoading(prevIsLoading => !prevIsLoading);
 			setError(null);
-			const pageToFetch = searchInputValue ? 1 : currentPage;
-			const { info, results } = searchInputValue
-				? await getFiltredCharacters(pageToFetch, searchInputValue)
+			const pageToFetch = debouncedSearchValue ? 1 : currentPage;
+			const { info, results } = debouncedSearchValue
+				? await getFiltredCharacters(pageToFetch, debouncedSearchValue)
 				: await getCharacters(pageToFetch);
 
 			setCharacters(results);
@@ -35,8 +37,8 @@ const CharactersPageContainer = ({ className }: { className?: string }) => {
 			setIsLoading(prevIsLoading => !prevIsLoading);
 			if (axios.isAxiosError(error)) {
 				if (error.response?.status === 404) {
-					setError(searchInputValue
-						? `No characters found for "${searchInputValue}"`
+					setError(debouncedSearchValue
+						? `No characters found for "${debouncedSearchValue}"`
 						: "Failed to load characters.");
 				}
 			} else if (error instanceof Error) {
@@ -47,7 +49,7 @@ const CharactersPageContainer = ({ className }: { className?: string }) => {
 				setError("Something went wrong");
 			}
 		}
-	}, [currentPage, searchInputValue])
+	}, [currentPage, debouncedSearchValue])
 
 	const handleSetCharacterClick = useCallback((character: CharacterType | null) => {
 		setSelectedCharacter(character);
@@ -71,8 +73,8 @@ const CharactersPageContainer = ({ className }: { className?: string }) => {
 
 	const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
 		event.preventDefault();
-		setCurrentPage(1);
-		setsearchInputValue(event.target.value);
+			setCurrentPage(1);
+			setsearchInputValue(event.target.value);
 	}
 
 	useEffect(() => {
