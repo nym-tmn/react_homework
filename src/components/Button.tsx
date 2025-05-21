@@ -36,6 +36,11 @@ const StyledButton = styled.button<ButtonProps>`
 		background-color: ${({ $backgroundColorHover }) => $backgroundColorHover || '#35782c'};
   }
 
+  &:disabled {
+		background-color: rgba(189, 189, 189, .5);
+		cursor: not-allowed;
+  }
+
   ${({ $isActive }) => $isActive && css`
     background-color: #4fbaf0;
     &:hover {

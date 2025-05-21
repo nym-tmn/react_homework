@@ -86,7 +86,7 @@ const CharactersPageContainer = ({ className }: { className?: string }) => {
 			<ContentTitle $fontSize="28px" $marginBottom="10px" $maxWidth="200px">
 				Characters
 			</ContentTitle>
-			<CustomnInput $alignSelf="flex-start" $marginBottom="10px">
+			<CustomnInput $alignSelf="flex-start" $margin="0 0 10px 0">
 				<Flex $gap="10px">
 					<label htmlFor="searchByName">
 						Search by name:

@@ -13,6 +13,7 @@ const StyledNavContainer = ({ className }: { className?: string }) => {
 			<NavButton to="/characters">Characters</NavButton>
 			<NavButton to="/locations">Locations</NavButton>
 			<NavButton to="/episodes">Episodes</NavButton>
+			<NavButton to="/extraPage">Extra Page</NavButton>
 		</Flex>
 	);
 };

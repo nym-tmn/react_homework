@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router"
 import styled from "styled-components"
 import { MainLayout } from "@layouts"
-import { CharactersPage, EmptyPage, EpisodesPage, HomePage, LocationsPage } from "@pages"
+import { CharactersPage, EmptyPage, EpisodesPage, ExtraPage, HomePage, LocationsPage } from "@pages"
 import { Flex } from "@components"
 import { useTheme } from "@hooks"
 
@@ -19,6 +19,7 @@ const StyledAppContainer = ({ className }: { className?: string }) => {
 					<Route path="characters" element={<CharactersPage />} />
 					<Route path="locations" element={<LocationsPage />} />
 					<Route path="episodes" element={<EpisodesPage />} />
+					<Route path="extraPage" element={<ExtraPage />} />
 					<Route path="*" element={<EmptyPage />}></Route>
 				</Route>
 			</Routes>

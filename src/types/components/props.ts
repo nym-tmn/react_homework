@@ -9,6 +9,8 @@ export interface ButtonProps {
 	$backgroundColor?: string;
 	$backgroundColorHover?: string;
 	onClick?: () => void;
+	disabled?: boolean;
+	type?: string;
 }
 
 export interface ContentTitleProps {
@@ -62,6 +64,13 @@ export interface ModalProps {
 
 export interface CustomnInputProps {
 	$alignSelf?: string;
-	$marginBottom?: string;
+	$margin?: string;
 	children?: React.ReactNode;
+	$hasError?: boolean;
+	$height?: string;
+	$minWidthInput?: string;
+	$border?: string;
+	$borderRadius?: string;
+	$padding?: string;
+	$minWidth?: string;
 }
