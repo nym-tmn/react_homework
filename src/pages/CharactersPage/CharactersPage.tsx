@@ -17,18 +17,17 @@ const CharactersPageContainer = ({ className }: { className?: string }) => {
 	const [isOpenModal, setIsOpenModal] = useState(false);
 	const [selectedCharacter, setSelectedCharacter] = useState<CharacterType | null>(null);
 	const [searchInputValue, setsearchInputValue] = useState('');
-	const debouncedSearchValue = useDebounce(searchInputValue, 500);
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
+	const debouncedSearchValue = useDebounce(searchInputValue, 500);
 
 	const getAxiosCharacters = useCallback(async () => {
 		try {
 			setIsLoading(prevIsLoading => !prevIsLoading);
 			setError(null);
-			const pageToFetch = debouncedSearchValue ? 1 : currentPage;
 			const { info, results } = debouncedSearchValue
-				? await getFiltredCharacters(pageToFetch, debouncedSearchValue)
-				: await getCharacters(pageToFetch);
+				? await getFiltredCharacters(currentPage, debouncedSearchValue)
+				: await getCharacters(currentPage);
 
 			setCharacters(results);
 			setPages(info.pages);
@@ -73,8 +72,8 @@ const CharactersPageContainer = ({ className }: { className?: string }) => {
 
 	const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
 		event.preventDefault();
-			setCurrentPage(1);
-			setsearchInputValue(event.target.value);
+		setCurrentPage(1);
+		setsearchInputValue(event.target.value);
 	}
 
 	useEffect(() => {
