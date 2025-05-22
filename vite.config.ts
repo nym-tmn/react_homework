@@ -5,7 +5,6 @@ import path from 'path'
 // https://vite.dev/config/
 export default defineConfig({
 	plugins: [react()],
-	base: '/react_homework/',
 	resolve: {
 		alias: {
 			'@': path.resolve('src'),
@@ -19,5 +18,5 @@ export default defineConfig({
 			'@providers': path.resolve('src/providers'),
 			'@context': path.resolve('src/context'),
 		}
-	}
+	},
 })
